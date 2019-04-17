@@ -1,0 +1,22 @@
+{
+  "name": "videosrobots",
+  "version": "1.0.0",
+  "description": "test technology",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oicramkroll/videosRobots.git"
+  },
+  "author": "Márcio Sena",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oicramkroll/videosRobots/issues"
+  },
+  "homepage": "https://github.com/oicramkroll/videosRobots#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
+}
