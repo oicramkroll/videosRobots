@@ -1,29 +1,31 @@
-const content = {
-    searchTerm:"",
-    prefix:"",
-    sourceContentOriginal:"",
-    sourceContentSinitized:"",
-    sentences:[
-        {
-            text:"",
-            keyWords:[],
-            images:[]
-        }
-    ]
-};
 const readline = require('readline-sync');
+const robots = {
+    userInput: require('./robots/user-input.js');
+    text: require('./robots/text.js')
+}
+
+
 function start(){
+/*
+    const content = {
+        searchTerm:'',
+        prefix:'',
+        sourceContentOriginal:'',
+        sourceContentSinitized:'',
+        sentences:[
+            {
+                text:'',
+                keyWords:[],
+                images:[]
+            }
+        ]
+    };
+*/
     const content = {};
-    content.searchTerm = askReturnSearchTerm();
-    content.askPrefeix = askReturnPrefix();
-    function askReturnSearchTerm(){
-        return readline.question("qual o termo? ");
-    }
-    function askReturnPrefix(){
-        const prefixes = ["quem e?","o que e?","a historia de."];
-        const selectedPrefix = readline.keyInSelect(prefixes,"qual o prefixo");
-        return prefixes[selectedPrefix];
-    }
-    console.log(content);
+    robots.userInput(content);
+    robots.text(content);
+    
+   
+    //console.log(content);
 }
 start();
