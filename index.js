@@ -1,3 +1,16 @@
+const content = {
+    searchTerm:"",
+    prefix:"",
+    sourceContentOriginal:"",
+    sourceContentSinitized:"",
+    sentences:[
+        {
+            text:"",
+            keyWords:[],
+            images:[]
+        }
+    ]
+};
 const readline = require('readline-sync');
 function start(){
     const content = {};
