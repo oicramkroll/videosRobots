@@ -3,7 +3,7 @@ const credentialAlgorithimia = require('../credentials/algorithmia.json');
 
 async function robot(content){
     await fetchContetFromWikiPedia(content);
-    //sanitizeContent(content);
+    sanitizeContent(content);
     //breakContentIntoSenteces(content);
     async function fetchContetFromWikiPedia(content){
         const clientAlgorithmia = algorithmia(credentialAlgorithimia.apikey);
@@ -13,9 +13,12 @@ async function robot(content){
             "articleName": content.searchTerm,
             "lang": "en"
         });
-
         content.sourceContentOriginal = result.get().content;
         //console.log(result.get());
+    }
+
+    function sinitizeContent(content){
+        //TO DO
     }
 }
 module.exports = robot;
