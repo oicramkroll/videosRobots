@@ -4,7 +4,7 @@ const robots = {
 }
 
 
-function start(){
+async function start(){
 /*
     const content = {
         searchTerm:'',
@@ -22,9 +22,9 @@ function start(){
 */
     const content = {};
     robots.userInput(content);
-    robots.text(content);
+    await robots.text(content);
     
    
-    //console.log(content);
+    console.log(content);
 }
 start();
