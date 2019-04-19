@@ -1,3 +1,4 @@
+const readline = require('readline-sync');
 function robot(content){
     content.searchTerm = askReturnSearchTerm();
     content.askPrefeix = askReturnPrefix();
