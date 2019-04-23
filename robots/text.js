@@ -1,5 +1,6 @@
 const algorithmia = require('algorithmia');
 const credentialAlgorithimia = require('../credentials/algorithmia.json');
+const sentenceBoundaryDetection = require('sbd');
 
 async function robot(content){
     await fetchContetFromWikiPedia(content);
@@ -27,6 +28,19 @@ async function robot(content){
         .replace(/\((?:\([^()]*\)|[^()])*\)/gm, '')
         .replace(/  /g,' ')
         .replace(/\'s/g,'');
+
+        content.sentences = [];
+        sentenceBoundaryDetection.sentences(content.sourceContentSinitized)
+        .forEach((sentence)=>{
+            content.sentences.push({
+                text:sentence,
+                keyWords:[],
+                images:[]
+            })
+        });
+        
+        
+        
     }
 }
 module.exports = robot;
