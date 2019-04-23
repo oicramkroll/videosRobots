@@ -17,8 +17,16 @@ async function robot(content){
         //console.log(result.get());
     }
 
-    function sinitizeContent(content){
-        //TO DO
+    function sanitizeContent(content){
+        content.sourceContentSinitized = content.sourceContentOriginal.split('\n')
+        .filter((line)=>{
+            if(line.trim().length === 0 || line.trim().startsWith('=')) return false;
+            return true;
+        })
+        .join(' ')
+        .replace(/\((?:\([^()]*\)|[^()])*\)/gm, '')
+        .replace(/  /g,' ')
+        .replace(/\'s/g,'');
     }
 }
 module.exports = robot;
