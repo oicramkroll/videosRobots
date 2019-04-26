@@ -1,0 +1,23 @@
+#Credentials format
+
+## Algorithimia
+
+
+File: `algorithimia.json`
+```
+{
+    "apikey":"simOg2jKkMlWbfni5raykszdAtR1"
+}
+```
+## whatson natural language undersstand
+File: `watson-nlu.jsons`
+```
+{
+    "apikey": "RmnHi28_XmgA7vXJIcitFrcv53pkqUf1UyZUfOsc5POP",
+    "iam_apikey_description": "Auto-generated for key 62f65aab-d772-478f-a189-db855e3c4e09",
+    "iam_apikey_name": "Auto-generated service credentials",
+    "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+    "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/0708aa2c00d04f91bf0520c7b4db531d::serviceid:ServiceId-efc2cd21-8999-4d42-b946-d7ed6aca50cc",
+    "url": "https://gateway.watsonplatform.net/natural-language-understanding/api"
+  }
+  ```
