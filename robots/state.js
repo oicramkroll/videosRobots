@@ -1,5 +1,5 @@
 const fs = require('fs');
-const contentFilePath ='./constent.js';
+const contentFilePath ='./constent.json';
 module.exports = {
     seve : (content)=>{
         const contentString = JSON.stringify(content);

@@ -3,6 +3,7 @@ const credentialAlgorithimia = require('../credentials/algorithmia.json');
 const sentenceBoundaryDetection = require('sbd');
 const whatsonCredentials = require('../credentials/watson-nlu.json');
 const naturalLanguageUnderstandv1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
+const state = require('./state.js');
 
 const nlu = new naturalLanguageUnderstandv1({
     version: '2019-04-25',
@@ -11,10 +12,13 @@ const nlu = new naturalLanguageUnderstandv1({
 });
 
 module.exports = robot;
-async function robot(content){
+async function robot(){
+    const content = state.load();
     await fetchContetFromWikiPedia(content);
     await sanitizeContent(content);
     await fetchKeyWordsOfAllSentences(content);
+
+    state.seve(content);
 
     async function fetchContetFromWikiPedia(content){
         const clientAlgorithmia = algorithmia(credentialAlgorithimia.apikey);

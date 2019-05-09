@@ -1,8 +1,12 @@
 const readline = require('readline-sync');
 const state = require('./state.js');
-module.exports = function (content){
-    content.searchTerm = askReturnSearchTerm();
-    content.askPrefeix = askReturnPrefix();
+module.exports = function (){
+    const content = {
+        maximumSentences : 3,
+        searchTerm : askReturnSearchTerm(),
+        askPrefeix : askReturnPrefix()
+    };
+    
     state.seve(content);
 
     function askReturnSearchTerm(){
