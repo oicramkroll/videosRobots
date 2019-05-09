@@ -4,7 +4,7 @@ const sentenceBoundaryDetection = require('sbd');
 const whatsonCredentials = require('../credentials/watson-nlu.json');
 const naturalLanguageUnderstandv1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
 
-var nlu = new naturalLanguageUnderstandv1({
+const nlu = new naturalLanguageUnderstandv1({
     version: '2019-04-25',
     iam_apikey: whatsonCredentials.apikey,
     url: whatsonCredentials.url

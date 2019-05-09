@@ -1,7 +1,10 @@
 const readline = require('readline-sync');
-function robot(content){
+const state = require('./state.js');
+module.exports = function (content){
     content.searchTerm = askReturnSearchTerm();
     content.askPrefeix = askReturnPrefix();
+    state.seve(content);
+
     function askReturnSearchTerm(){
         return readline.question("qual o termo? ");
     }
@@ -10,5 +13,4 @@ function robot(content){
         const selectedPrefix = readline.keyInSelect(prefixes,'qual o prefixo');
         return prefixes[selectedPrefix];
     }
-}
-module.exports = robot;
+};
