@@ -13,6 +13,6 @@ async function start(){
     await robots.searchEngine();
     
     const content = robots.state.load();
-    console.dir(content,{depth:null});
+    //sconsole.dir(content,{depth:null});
 }
 start();
