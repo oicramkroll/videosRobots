@@ -7,7 +7,7 @@ module.exports  = async ()=>{
     const content = state.load();
     //await fetchImagesOfAllScentences(content);
     await downloadImages(content);
-    //state.seve(content);
+    state.seve(content);
     
     async function fetchImagesOfAllScentences(content){
         for (const sentence of content.sentences) {
@@ -30,39 +30,39 @@ module.exports  = async ()=>{
         return images;
     }
 
-    async function saveImages(imagesArray){
+    async function saveImages(urlImage,indexSentece,indexImage){
         try {
-            for (let index = 0; index < imagesArray.length; index++) {
-                const urlImage = imagesArray[index];
-                const { filename, image } = await download.image({
-                    url: urlImage,
-                    dest: `./content/${index}--original.png`
-                  });
-                console.log(`imagem salva => ${filename}`);
-            }
+            const { filename, image } = await download.image({
+                url: urlImage,
+                dest: `./content/${indexSentece}-${indexImage}-original.png`
+                });
+            console.log(`imagem salva => ${filename}`);
+            return `${filename}`;
         } catch (error) {
-            console.log(`erro ao salvar a imagem => ${error}`);
+            throw new Error(`erro ao salvar a imagem => ${error}`);
         }
     }
 
     async function downloadImages(content){
-        content.imagesForDownload=[];
-        content.sentences.forEach(sentence => {
-            for (const image of sentence.images) {
+        content.DownloadedImages=[];
+        const imagesForDownload = [];
+        for (let indexSentece = 0; indexSentece < content.sentences.length; indexSentece++) {
+            const sentence = content.sentences[indexSentece];
+            for (let indexImage = 0; indexImage < sentence.images.length; indexImage++) {
+                const urlImage = sentence.images[indexImage];
                 try {
-                    if(content.imagesForDownload.includes(image)) 
+                    if(imagesForDownload.includes(urlImage)) {
                         throw new Error(`Imagem ja existe`);
-                    content.imagesForDownload.push(image);
+                    }
+                    const imageDanloaded = await saveImages(urlImage,indexSentece,indexImage);
+                    imagesForDownload.push(urlImage);
+                    content.DownloadedImages.push(imageDanloaded);
                     break;
                 } catch (error) {
                     console.log(`Erro => ${error}`);
                 }
             }
-        });
-        await saveImages(content.imagesForDownload);
+        };
     }
     
-   
-
-
 }
